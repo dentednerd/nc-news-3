@@ -6,40 +6,37 @@ const globalStyles = globalCss({
     padding: '0'
   },
 
+  ':root': {
+    backgroundColor: 'black'
+  },
+
   body: {
-    backgroundColor: '$lightBlue',
+    backgroundColor: 'white',
     color: '$darkBlue',
     padding: '0',
     margin: '0',
-    fontFamily: "'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+    fontFamily: "'Merriweather', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', serif",
     '-webkit-font-smoothing': 'antialiased',
     '-moz-osx-font-smoothing': 'grayscale',
     fontSize: '16px',
-    lineHeight: '1.2'
+    lineHeight: '1.5'
   },
 
   main: {
-    backgroundColor: '$lightBlue',
     width: '100%',
+    minHeight: 'calc(100vh - 4rem)',
+    zIndex: '1',
 
     'section.content': {
       maxWidth: '800px',
       margin: '0 auto',
       padding: '$default',
-      minHeight: '100vh'
+      zIndex: '1'
     }
   },
 
   p: {
     marginBottom: '1.2rem'
-  },
-
-  h1: {
-    display: 'inline',
-    fontFamily: '$heading',
-    fontSize: '$4',
-    padding: '0',
-    margin: '0'
   },
 
   h2: {

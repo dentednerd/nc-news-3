@@ -15,7 +15,8 @@ export const {
       darkBlue: '#354262',
       blue: '#667295',
       lightBlue: '#E5F0FF',
-      gold: '#D6A419'
+      gold: '#D6A419',
+      grey: 'hsl(0, 0%, 75%)'
     },
     fontSizes: {
       0: '0.875rem',
@@ -35,15 +36,22 @@ export const {
     },
     fonts: {
       heading: '"Zilla Slab", serif',
-      body: '"Open Sans", sans-serif'
+      body: '"Merriweather", serif'
     },
     radii: {
       corner: '1rem',
       circle: '50%'
     },
+    shadows: {
+      default: '0 0 0.25rem $colors$darkBlue',
+      wide: '0 0 0.5rem $colors$darkBlue'
+    },
     space: {
       default: '1rem'
     },
+    transitions: {
+      all: 'all 0.2s'
+    }
   },
   media: {
     bp1: '(min-width: 768px)',
