@@ -1,18 +1,18 @@
 import { useHistory } from 'react-router-dom';
 import { styled } from '../../stitches.config';
+import images from '../../assets';
 import User from '../../atoms/user';
 
 export default function Card({ article, hideUser }) {
   const history = useHistory();
 
-  const images = {
-    football: "https://ugc.futurelearn.com/uploads/images/90/2d/902d0c48-095e-4919-81aa-4b8f4d3f198c.jpg",
-    cooking: "https://www.yesmagazine.org/wp-content/uploads/imports/36a0edc6dcbf4466ae71d0548f94ff43.jpg",
-    coding: "https://miro.medium.com/max/3200/0*QUqE4WGF8_cC9bIl.jpg"
-  }
+  if (!article) return null;
+
+  const { topic, article_id } = article;
+  const image = images[topic][article_id % 3]
 
   const StyledCard = styled('section', {
-    backgroundImage: `url(${images[article.topic]})`,
+    backgroundImage: `url(${image})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     display: 'flex',

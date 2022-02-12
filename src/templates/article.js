@@ -5,6 +5,7 @@ import {
   fetchCommentsByArticleId
 } from '../api';
 import { styled } from '../stitches.config';
+import images from '../assets';
 import LoadingSpinner from '../atoms/loading-spinner';
 import Time from '../atoms/time';
 import User from '../atoms/user';
@@ -18,11 +19,15 @@ export default function Article() {
   const [error, setError] = useState(false);
   const [article, setArticle] = useState({});
   const [comments, setComments] = useState([]);
+  const [image, setImage] = useState("");
 
   useEffect(() => {
     let isMounted = true;
     fetchArticleById(id)
-      .then((article) => { if (isMounted) setArticle(article) })
+      .then((article) => {
+        if (isMounted) setArticle(article);
+        if (isMounted) setImage(images[article.topic][parseInt(id) % 3]);
+      })
       .catch((err) => { if (err) setError(true); });
     return () => { isMounted = false };
   }, [id, error]);
@@ -36,17 +41,12 @@ export default function Article() {
 
   if (error) return <Redirect to="/404" />;
   if (isLoading) return <LoadingSpinner />;
-
-  const images = {
-    football: "https://ugc.futurelearn.com/uploads/images/90/2d/902d0c48-095e-4919-81aa-4b8f4d3f198c.jpg",
-    cooking: "https://www.yesmagazine.org/wp-content/uploads/imports/36a0edc6dcbf4466ae71d0548f94ff43.jpg",
-    coding: "https://miro.medium.com/max/3200/0*QUqE4WGF8_cC9bIl.jpg"
-  }
+  if (!article) return null;
 
   const StyledArticle = styled('article', {
     header: {
       width: '100%',
-      backgroundImage: `url(${images[article.topic]})`,
+      backgroundImage: `url(${image})`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       display: 'flex',
